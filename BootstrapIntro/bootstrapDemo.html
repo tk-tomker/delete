@@ -9,7 +9,39 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body id="myPage" dadta-spy="scroll" data-target=".navbar" data-offset="50">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Oundle RFC</a>
+                </div>
+                <div class="collapse navbar-collapse" id="mNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#myCarousel">HOME</a></li>
+                        <li><a href="#team">BAND</a></li>
+                        <li><a href="#upcoming">TOUR</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Merchendaise</a></li>
+                                <li><a href="#">Extras</a></li>
+                                <li><a href="#">Media</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+   
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!---Inidicators---->
@@ -58,7 +90,7 @@
             <h3>OUNDLE RFC</h3>
             <p><em>We Love Ruggers!</em></p>
             <p>Back in 1976, when flares were an acceptable fashion item, a group of rugby enthusiasts met at the Ship to form Oundle Rugby Club. Many founder members are still involved in the club and were players in Oundle's first cup match, losing to Kettering 137:0 - still a club record loss. And in those days tries were only worth 3 points!o
-            <div class="row">
+            <div class="row" id="team">
                 <div class="col-sm-4">
                     <p class="text-center"><strong>Kachra</strong></p> <br>
                     <a href="#demo" data-toggle="collapse">
@@ -93,7 +125,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-1">
+        <div class="bg-1" id="upcoming">
             <div class="container">
                 <h3 class="text-center">UPCOMING Matches</h3>
                 <p class="text-center">Get involved! Sign Up Now!</p>
@@ -157,7 +189,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="contact">
             <h3 class="text-center">Contanct</h3>
             <p class="text-center"><em>Get Involved!</em></p>
             <div class="row test">
@@ -185,36 +217,35 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">OUndle RFC</a>
-                </div>
-                <div class="collapse navbar-collapse" id="mNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#home">HOME</a></li>
-                        <li><a href="#band">BAND</a></li>
-                        <li><a href="#tour">TOUR</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Merchendaise</a></li>
-                                <li><a href="#">Extras</a></li>
-                                <li><a href="#">Media</a></li>
-                            </ul>
-                        </li>
-                        <li></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <footer class="text-center">
+            <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a><br><br>
+            <p>Bootstrap Theme Made by <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p>
+        </footer>
+        <script>
+            $(document).ready(function(){
+                //Initialize Tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+            })
+            $(document).ready(function(){
+                $(".navbar a, footer a[href='#myPage']").on('click', function(event){
+                    if(this.has !=="") {
+
+                        event.preventDefault();
+
+                        var hash = this.hash;
+
+                        $('html, body').animate({
+                            scrollTop: $(hash).offset().top
+                        }, 900, function(){
+
+                            window.location.hash = hash;
+                        }
+                    )
+                    }
+                })
+            })
+        </script>
     </body>
 </html>
